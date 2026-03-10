@@ -1,0 +1,18 @@
+name: Redis-In-Action
+
+services:
+  redis: 
+    image: redis:7.4.3-alpine
+    container_name: redis_server
+    restart: always
+    ports:
+      - "6379:6379"
+
+  redisinsight:
+    image: redis/redisinsight:2.68
+    container_name: redis_insight
+    depends_on:
+      - redis
+    ports:
+      - "5540:5540"
+    restart: always
